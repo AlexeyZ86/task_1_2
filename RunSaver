@@ -1,0 +1,9 @@
+package Lesson_1.q_2;
+
+public class RunSaver {
+    public static void main(String[] args) {
+        Container container = new Container();
+        SaveText saveText = new SaveText();
+        saveText.save(container);
+    }
+}
