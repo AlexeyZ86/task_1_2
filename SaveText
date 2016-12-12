@@ -1,0 +1,25 @@
+package Lesson_1.q_2;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+public class SaveText {
+
+    public void save(Object obj){
+        final Class<?> cls = obj.getClass();
+        SaveTo annot = cls.getAnnotation(SaveTo.class);
+        Method[] metods = cls.getMethods();
+        for (Method m: metods){
+            if (m.isAnnotationPresent(Saver.class)){
+                try {
+                    m.invoke(obj, annot.path());
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+}
