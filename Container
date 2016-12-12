@@ -1,0 +1,21 @@
+package Lesson_1.q_2;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+@SaveTo(path = "C:\\file.txt")
+public class Container {
+    String stringToSave = "Save me!!!";
+
+    @Saver
+    public void save(String fileName){
+
+        try(FileWriter writer  = new FileWriter(fileName)) {
+            writer.write(stringToSave);
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
